@@ -3,7 +3,6 @@ import {Counter} from "./Counter";
 import {Button} from "./Button";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    actions,
     changeSettingsModeTC,
     CounterActionsType,
     CounterStateType,
@@ -23,7 +22,7 @@ export const CounterShowMode: React.FC<{ errorMode: boolean }> = ({errorMode}) =
 
     useEffect(()=>{
         dispatch(setCounterStateTC())
-    },[])
+    },[dispatch])
     const onClickIncrementCounterHandler = () => {
         if (counter < maxValue) {
             dispatch(incCounterTC())
