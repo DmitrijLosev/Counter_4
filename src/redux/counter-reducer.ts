@@ -79,7 +79,7 @@ export const setSettingsTC = () => (dispatch: ThunkDispatch<RootStateType, unkno
     dispatch(actions.resetCounter)
     dispatch(actions.changeSettingMode(false))
 }
-export const setMinMaxValuesTC = (value:number , propertyName:keyof MinMaxType) =>
+export const setMinMaxValuesTC = (value:number, propertyName:keyof MinMaxType) =>
     (dispatch: ThunkDispatch<RootStateType, unknown, CounterActionsType>, getState: () => RootStateType) => {
     let state = getState()
     localStorage.setItem("state", JSON.stringify({...state,  minMaxValue:{...state.minMaxValue,

@@ -11,24 +11,25 @@ export const SettingsMode: React.FC<{ errorMode: boolean }> = ({errorMode}) => {
 
         const dispatch = useDispatch<ThunkDispatch<RootStateType, unknown, CounterActionsType>>()
         const {minValue, maxValue} = useSelector<RootStateType, MinMaxType>(state => state.minMaxValue)
-
         const setSettingsButtonHandler = () => {
            dispatch(setSettingsTC())
         }
-        const setMinMaxValueHandler = (e: ChangeEvent<HTMLInputElement>, name: keyof MinMaxType) =>
+        const setMinMaxValueHandler = (e: ChangeEvent<HTMLInputElement>, name: keyof MinMaxType) =>{
             dispatch(setMinMaxValuesTC(+e.currentTarget.value, name))
+        }
+
 
 
         return (
             <div className="common set">
                 <div className="common">
                     <Input errorMode={minValue < 0 || maxValue <= minValue}
-                           value={minValue}
+                           value={minValue.toString()}
                            onChange={(e: ChangeEvent<HTMLInputElement>) => setMinMaxValueHandler(e, "minValue")}>
                         start value:
                     </Input>
                     <Input errorMode={maxValue < 1 || maxValue <= minValue}
-                           value={maxValue}
+                           value={maxValue.toString()}
                            onChange={(e: ChangeEvent<HTMLInputElement>) => setMinMaxValueHandler(e, "maxValue")}>
                         max value:
                     </Input>
